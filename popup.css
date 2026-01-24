@@ -1,0 +1,66 @@
+* {
+    font-family: sans-serif;
+    background-color: #F3F6FB;
+}
+
+.main-body {
+    width: 400px;
+}
+
+.website-Customize {
+    background-color: #FFFFFF;
+    border: 2px solid black;
+    border-radius: 14px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.website-Customize .content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.website-Customize.expanded .content {
+    max-height: 1000px;
+}
+
+.website-Customize div:not(.switch):not(.slider):not(.toggle),
+.website-Customize h1,
+.website-Customize input {
+  background-color: #ffffff;
+}
+
+
+.website-Customize input {
+    width: 85%;
+}
+
+.switch {
+  width: 60px;
+  height: 30px;
+  background: #ccc;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.knob {
+  width: 26px;
+  height: 26px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: left 0.3s;
+}
+
+.switch.on {
+  background: #4ade80;
+}
+
+.switch.on .knob {
+  left: 32px;
+}
