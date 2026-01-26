@@ -1,32 +1,17 @@
 {
     "manifest_version": 3,
-    "name": "Focus: on",
+    "name": "Focus on",
     "version": "0.1.0",
     "description": "This extension will help to focus student",
-    "permissions": ["storage", "tabs"],
-    "host_permissions": ["https://*.youtube.com/*"],
-    "background" : {
-        "service_worker": "background.js"
-    },
+    "permissions": ["storage", "tabs", "activeTab", "scripting"],
     "content_scripts": [
         {
-            "matches": ["https://*.youtube.com/*"],
-            "js": ["contentScript.js"]
-        }
-    ],
-    "web_accessible_resources": [
-        {
-            "resources": [
-                "assets/bookmark.png",
-                "assets/play.png",
-                "assets/delete.png",
-                "assets/save.png"
-            ],
-            "matches": ["https://*.youtube.com/*"]
+            "matches": ["<all_urls>"],
+            "js": ["./JS_files/theme.js"]
         }
     ],
     "action": {
-    "default_title": "My YT Bookmarks",
+    "default_title": "Focus On",
     "default_icon": {
         "16": "assets/ext-icon.png",
         "24": "assets/ext-icon.png",

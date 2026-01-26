@@ -2,46 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>YT Bookmarks</title>
+    <title>Focus On</title>
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-    <div class="main-body">
-        <div class="website-Customize" id = "customizeBox">
-            <h1>Website Customize</h1>
 
-            <div class="content">
-                
+    <div class="app-container">
+
+        <!-- Website Customize Panel -->
+        <section class="customize-panel" id="customizeBox">
+
+            <!-- Header (clickable only for expand/collapse) -->
+            <header class="customize-header">
+                <h1 class="customize-title">Website Customize</h1>
+                <span class="customize-arrow">▼</span>
+            </header>
+
+            <!-- Expandable Content -->
+            <div class="customize-content">
+
                 <hr>
-                <div class="mode">
-                    <h1>Dark / Light</h1>
-                    <div class="switch">
+
+                <!-- Theme Toggle -->
+                <div class="setting-row theme-setting">
+                    <h2 class="setting-label">Dark / Light</h2>
+                    <div class="switch" role="button" aria-label="Toggle dark mode">
                         <div class="knob"></div>
                     </div>
                 </div>
-                <div class="brightness">
-                    <h1>Brightness</h1>
-                    <input type = "range" class = "slider">
-                    <img src="/assets/brightness.png" alt="Brightness" height = "30px" width = "30px">
+
+                <!-- Brightness -->
+                <div class="setting-row">
+                    <h2 class="setting-label">Brightness</h2>
+                    <div class="control">
+                        <input type="range" class="slider" min="50" max="150" value="100">
+                        <img src="/assets/brightness.png" alt="Brightness icon">
+                    </div>
                 </div>
-                <div class="contrast">
-                    <h1>Contrast</h1>
-                    <input type="range" name="" id="" class = "slider">
-                    <img src="/assets/contrast.png" alt="Brightness" height = "30px" width = "30px">
+
+                <!-- Contrast -->
+                <div class="setting-row">
+                    <h2 class="setting-label">Contrast</h2>
+                    <div class="control">
+                        <input type="range" class="slider" min="50" max="150" value="100">
+                        <img src="/assets/contrast.png" alt="Contrast icon">
+                    </div>
                 </div>
-                <div class="sepia">
-                    <h1>Sepia</h1>
-                    <input type="range" name="" id="" class = "slider">
-                    <img src="/assets/idea.png" alt="Brightness" height = "30px" width = "30px">
+
+                <!-- Sepia -->
+                <div class="setting-row">
+                    <h2 class="setting-label">Sepia</h2>
+                    <div class="control">
+                        <input type="range" class="slider" min="0" max="100" value="0">
+                        <img src="/assets/idea.png" alt="Sepia icon">
+                    </div>
                 </div>
-                <div class="grayscale">
-                    <h1>Grayscale</h1>
-                    <input type="range" name="" id="" class = "slider">
-                    <img src="/assets/color.png" alt="Brightness" height = "30px" width = "30px">
+
+                <!-- Grayscale -->
+                <div class="setting-row">
+                    <h2 class="setting-label">Grayscale</h2>
+                    <div class="control">
+                        <input type="range" class="slider" min="0" max="100" value="0">
+                        <img src="/assets/color.png" alt="Grayscale icon">
+                    </div>
                 </div>
+
             </div>
-        </div>
+        </section>
+
     </div>
-    <script src = "script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
