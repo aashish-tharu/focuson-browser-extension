@@ -1,0 +1,196 @@
+
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --text-primary: #1d1d1f;
+    --text-secondary: #515154;
+    --bg-overlay: rgba(255, 255, 255, 0.1);
+    --input-fill: rgba(255, 255, 255, 0.3);
+    --accent-blue: #0071e3;
+}
+
+body.dark {
+    --glass-bg: rgba(0, 0, 0, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #f5f5f7;
+    --text-secondary: #a1a1a6;
+    --bg-overlay: rgba(0, 0, 0, 0.45);
+    --input-fill: rgba(0, 0, 0, 0.3);
+    --accent-blue: #409fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background: url('https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(1rem, 5vw, 2.5rem); 
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+    transition: color 0.4s ease;
+}
+
+/* Background overlay improves text contrast and darkens in Dark Mode */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg-overlay);
+    transition: background 0.4s ease;
+    z-index: 0;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap; 
+    gap: 1rem;
+    z-index: 10;
+}
+
+.menu-btn {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.stats-weather-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 280px;
+}
+
+@media (min-width: 768px) {
+    .stats-weather-container {
+        align-items: flex-end;
+    }
+}
+
+.glass-widget {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    padding: 1rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    transition: background 0.4s ease, border 0.4s ease;
+}
+
+.center-content {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    z-index: 5;
+}
+
+.clock {
+    font-size: clamp(4rem, 18vw, 9rem); 
+    font-weight: 500;
+    letter-spacing: -3px;
+    line-height: 1;
+}
+
+.greeting {
+    font-size: clamp(1.5rem, 6vw, 2.8rem);
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.quote {
+    color: var(--text-secondary);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    margin-bottom: 2rem;
+}
+
+.task-card {
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+    width: 95%;
+    margin: 0 auto 2rem;
+}
+
+.task-input {
+    width: 100%;
+    background: var(--input-fill);
+    border: 1px solid var(--glass-border);
+    padding: 1rem;
+    border-radius: 10px;
+    color: var(--text-primary);
+    text-align: center;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.task-input:focus {
+    border-color: var(--accent-blue);
+}
+
+.focus-btn {
+    background: linear-gradient(135deg, #5b9bd5 0%, #3d71c2 100%);
+    color: white;
+    border: none;
+    padding: 1rem 4rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(91, 155, 213, 0.3);
+    transition: transform 0.2s;
+}
+
+.focus-btn:hover {
+    transform: translateY(-2px);
+}
+
+.bottom-nav {
+    display: flex;
+    flex-direction: column-reverse; 
+    align-items: center;
+    gap: 1.5rem;
+    z-index: 5;
+    padding-top: 2rem;
+}
+
+@media (min-width: 600px) {
+    .bottom-nav {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .todo-dropdown {
+        position: absolute;
+        right: 0;
+    }
+}
+
+.copyright {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.todo-dropdown {
+    padding: 0.6rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

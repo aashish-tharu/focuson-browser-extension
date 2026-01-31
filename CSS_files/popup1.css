@@ -1,0 +1,70 @@
+:root {
+    --bg-panel: rgba(255, 255, 255, 0.7);
+    --bg-time: #e6f4ff;
+    --bg-weather: #fff9db;
+    --bg-home: #f0f0f0;
+    --text-color: #333;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body.dark {
+    --bg-panel: rgba(30, 41, 59, 0.8);
+    --bg-time: #1e293b;
+    --bg-weather: #3e3a15;
+    --bg-home: #334155;
+    --text-color: #f8fafc;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.essentialPannel {
+    background: var(--bg-panel);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 12px;
+    display: inline-block;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.time-settings {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.time-settings > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.time-settings > div:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.95);
+}
+
+.time { background-color: var(--bg-time); }
+.weather { background-color: var(--bg-weather); }
+.home { background-color: var(--bg-home); }
+
+.time-settings p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.time-settings img {
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+}

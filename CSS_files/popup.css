@@ -1,0 +1,140 @@
+/* ===============================
+   GLOBAL VARIABLES (LIGHT MODE)
+================================ */
+:root {
+    --bg-main: #f3f6fb;
+    --bg-panel: #ffffff;
+    --border-color: #000000;
+
+    --text-primary: #111111;
+    --text-secondary: #444444;
+
+    --switch-bg: #cccccc;
+    --switch-active: #4ade80;
+
+    --knob-bg: #ffffff;
+
+    --slider-track: #d1d5db;
+}
+
+/* ===============================
+   DARK MODE VARIABLES
+================================ */
+body.dark {
+    --bg-main: #0D1117;
+    --bg-panel: #161B22;
+    --border-color: #30363D;
+
+    --text-primary: #e5e7eb;
+    --text-secondary: #cbd5f5;
+
+    --switch-bg: #334155;
+    --switch-active: #4ade80;
+
+    --knob-bg: #ffffff;
+
+    --slider-track: #334155;
+}
+
+/* ===============================
+   BASE STYLES
+================================ */
+* {
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    width: 400px;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    transition: background 0.3s, color 0.3s;
+}
+
+/* ===============================
+   CUSTOMIZE PANEL
+================================ */
+.customize-panel {
+    background: var(--bg-panel);
+    border: 2px solid var(--border-color);
+    border-radius: 14px;
+    padding: 10px;
+}
+
+/* Header handled separately in JS */
+.customize-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* ===============================
+   EXPAND / COLLAPSE
+================================ */
+.customize-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+}
+
+.customize-content.expanded {
+    max-height: 1000px;
+}
+
+/* ===============================
+   TEXT
+================================ */
+.website-Customize h1,
+.website-Customize h2 {
+    color: var(--text-primary);
+}
+
+.setting-label {
+    color: var(--text-secondary);
+}
+
+/* ===============================
+   INPUTS
+================================ */
+.website-Customize input[type="range"] {
+    width: 85%;
+    background: var(--slider-track);
+}
+
+/* ===============================
+   SWITCH
+================================ */
+.switch {
+    width: 60px;
+    height: 30px;
+    background: var(--switch-bg);
+    border-radius: 30px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.knob {
+    width: 26px;
+    height: 26px;
+    background: var(--knob-bg);
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: left 0.3s;
+}
+
+.switch.on {
+    background: var(--switch-active);
+}
+
+.switch.on .knob {
+    left: 32px;
+}
+
+.control img {
+  height: 30px;
+  width: 30px;
+}

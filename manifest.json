@@ -1,23 +1,29 @@
 {
-    "manifest_version": 3,
-    "name": "Focus on",
-    "version": "0.1.0",
-    "description": "This extension will help to focus student",
-    "permissions": ["storage", "tabs", "activeTab", "scripting"],
-    "content_scripts": [
-        {
-            "matches": ["<all_urls>"],
-            "js": ["./JS_files/theme.js"]
-        }
-    ],
-    "action": {
-    "default_title": "Focus On",
-    "default_icon": {
-        "16": "assets/ext-icon.png",
-        "24": "assets/ext-icon.png",
-        "32": "assets/ext-icon.png"
-    },
-    "default_popup": "popup.html"
-    }
+  "manifest_version": 3,
+  "name": "Focus on",
+  "version": "0.1.0",
+  "description": "This extension will help to focus student",
 
+  "permissions": ["storage", "tabs", "activeTab", "scripting"],
+
+  "chrome_url_overrides": {
+    "newtab": "focus.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./JS_files/theme.js"]
+    }
+  ],
+
+  "action": {
+    "default_title": "Focus On",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/ext-icon.png",
+      "24": "assets/ext-icon.png",
+      "32": "assets/ext-icon.png"
+    }
+  }
 }
