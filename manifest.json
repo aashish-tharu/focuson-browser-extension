@@ -4,11 +4,15 @@
   "version": "0.1.0",
   "description": "This extension will help to focus student",
 
-  "permissions": ["storage", "tabs", "activeTab", "scripting"],
+  "permissions": ["storage", "tabs", "activeTab", "scripting", "geolocation"],
 
   "chrome_url_overrides": {
     "newtab": "focus.html"
   },
+
+  "host_permissions": [
+    "https://api.open-meteo.com/*"
+  ],
 
   "content_scripts": [
     {
