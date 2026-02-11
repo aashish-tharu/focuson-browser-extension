@@ -65,3 +65,11 @@ inputNode.addEventListener('input', ()=>{
         }
     });
 })
+
+
+
+//working on nav show
+document.querySelector('.menu-btn').addEventListener('click', ()=>{
+    document.querySelector('.nav-content').classList.toggle('nav-show');
+    console.log(document.querySelector('.nav-content'));
+})

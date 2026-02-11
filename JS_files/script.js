@@ -18,6 +18,7 @@ const switchBtn = document.querySelector('.switch');
 
 // I will get the state of my extension mode
 chrome.storage.local.get(['displayMode'], (result)=>{
+    console.log(result.displayMode);
     if (result.displayMode == 'on') {
         switchBtn.classList.add('on');
         document.body.classList.add('dark');
@@ -35,6 +36,9 @@ switchBtn.addEventListener('click', async (e)=>{
     const modeState = isNowOn ? 'off' : 'on';
     //updating new state to chrome store
     chrome.storage.local.set({displayMode : modeState});
+    chrome.storage.local.get(['displayMode'], (result)=>{
+    console.log(result.displayMode);
+})
     document.body.classList.toggle('dark');
 
     //send the new state to chrome storage

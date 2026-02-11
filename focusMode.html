@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Engine</title>
+    <link rel="stylesheet" href="./CSS_files/foucsMode.css">
+</head>
+<body class="dark">
+
+    <div id="intro-screen" class="full-screen">
+        <h1 id="slogan-text">"Fetching focus..."</h1>
+    </div>
+
+    <main id="main-content" class="full-screen hidden">
+        <button id="exit-btn" class="exit-trigger">EXIT FOCUS</button>
+
+        <section class="central-focus">
+            <div id="active-session">
+                <p class="label">CURRENT SESSION</p>
+                <h1 id="timer-display">25:00</h1>
+                <div class="controls">
+                    <button id="start-btn">START WORK</button>
+                    <button id="reset-btn" class="secondary">RESET</button>
+                </div>
+            </div>
+
+            <div id="intervention-view" class="hidden">
+                <h1 class="urgent-text">NEVER GIVE UP.</h1>
+                <p>"The only way to fail is to quit."</p>
+                <button id="stay-btn">I'M STAYING</button>
+            </div>
+        </section>
+
+        <nav class="bottom-nav">
+            <div class="nav-item">
+                <span id="nav-clock">00:00</span>
+            </div>
+            <div class="nav-item">
+                <span id="nav-weather">13°C</span>
+            </div>
+            <div class="nav-item">
+                <a href="#" id="home-link">HOME</a>
+            </div>
+        </nav>
+    </main>
+
+    <script src="./JS_files/focusMode.js"></script>
+</body>
+</html>
