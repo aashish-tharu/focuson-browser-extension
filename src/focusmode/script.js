@@ -268,7 +268,7 @@ exitBtn.onclick = function() {
         this.innerText = "YES, I AM QUITTING";
         exitAttempted = true;
     } else {
-        window.location.href = "focus.html";
+        window.location.href = "../homepage/index.html";
     }
 };
 

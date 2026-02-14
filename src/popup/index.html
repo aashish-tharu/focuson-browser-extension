@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Focus On</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- Website Customize Panel -->
+        <section class="customize-panel" id="customizeBox">
+
+            <!-- Header (clickable only for expand/collapse) -->
+            <header class="customize-header">
+                <h1 class="customize-title">Website Customize</h1>
+                <span class="customize-arrow">▼</span>
+            </header>
+
+            <!-- Expandable Content -->
+            <div class="customize-content">
+
+                <hr>
+
+                <!-- Theme Toggle -->
+                <div class="setting-row theme-setting">
+                    <h2 class="setting-label">Dark / Light</h2>
+                    <div class="switch" role="button" aria-label="Toggle dark mode">
+                        <div class="knob"></div>
+                    </div>
+                </div>
+
+                <!-- Brightness -->
+                <div class="setting-row">
+                    <h2 class="setting-label">Brightness</h2>
+                    <div class="control">
+                        <input type="range" class="slider" min="50" max="150" value="100">
+                        <img src="../assets/brightness.png" alt="Brightness icon">
+                    </div>
+                </div>
+
+                <!-- Contrast -->
+                <div class="setting-row">
+                    <h2 class="setting-label">Contrast</h2>
+                    <div class="control">
+                        <input type="range" class="slider" min="50" max="150" value="100">
+                        <img src="../assets/contrast.png" alt="Contrast icon">
+                    </div>
+                </div>
+
+                <!-- Sepia -->
+                <div class="setting-row">
+                    <h2 class="setting-label">Sepia</h2>
+                    <div class="control">
+                        <input type="range" class="slider" min="0" max="100" value="0">
+                        <img src="../assets/idea.png" alt="Sepia icon">
+                    </div>
+                </div>
+
+                <!-- Grayscale -->
+                <div class="setting-row">
+                    <h2 class="setting-label">Grayscale</h2>
+                    <div class="control">
+                        <input type="range" class="slider" min="0" max="100" value="0">
+                        <img src="../assets/color.png" alt="Grayscale icon">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id = "bottom-nav" class = "essentialPannel">
+            <div class="time-settings">
+                <div class="time">
+                    <img src="../assets/clock.png" alt="time">
+                    <p id = "time">2:45 PM</p>
+                </div>
+                <div class="weather">
+                    <img src="../assets/weather.png" alt="weather">
+                    <p id = "weather">13°C</p>
+                </div>
+                <div class="home">
+                    <img src="../assets/home-button.png" alt="home">
+                    <p id = "home">Home</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+    <script src="time.js"></script>
+</body>
+</html>

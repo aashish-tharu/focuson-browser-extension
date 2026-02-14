@@ -10,6 +10,7 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 1000);
 
+//handing the event listener for homepage.
 document.querySelector('.home').addEventListener('click', ()=>{
-        window.open('focus.html');
+        window.open('../homepage/index.html');
 })

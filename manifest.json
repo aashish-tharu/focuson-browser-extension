@@ -7,7 +7,7 @@
   "permissions": ["storage", "tabs", "activeTab", "scripting", "geolocation"],
 
   "chrome_url_overrides": {
-    "newtab": "focus.html"
+    "newtab": "./src/homepage/index.html"
   },
 
   "host_permissions": [
@@ -17,17 +17,17 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["./JS_files/theme.js"]
+      "js": ["./src/background/themeManager.js"]
     }
   ],
 
   "action": {
     "default_title": "Focus On",
-    "default_popup": "popup.html",
+    "default_popup": "./src/popup/index.html",
     "default_icon": {
-      "16": "assets/ext-icon.png",
-      "24": "assets/ext-icon.png",
-      "32": "assets/ext-icon.png"
+      "16": "./src/assets/ext-icon.png",
+      "24": "./src/assets/ext-icon.png",
+      "32": "./src/assets/ext-icon.png"
     }
   }
 }
