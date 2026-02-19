@@ -1,0 +1,61 @@
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import style from './Sidebar.module.css';
+import Profile from '../assets/user.png';
+
+// Importing icons (using React Icons / Ionicons/ Material as examples)
+import { IoSearchOutline, IoPersonOutline, IoKeyOutline, IoColorPaletteOutline, IoAccessibilityOutline, IoExtensionPuzzleOutline } from "react-icons/io5";
+
+const Sidebar = ({ activeTab, onTabChange }) => {
+  // const [activeId, setActiveId] = useState('profiles');
+  
+    const [username, setUsername] = useState('Guest');
+    useEffect(()=>{
+      if (typeof chrome !== "undefined" && chrome?.storage?.local) {
+        chrome.storage.local.get('extenUserName', (result) =>{
+          const name = result['extenUserName'] || 'Guest';
+          setUsername(name);
+        })
+      }
+    })
+
+
+  const menuItems = [
+    { id: 'profiles', label: 'Profiles', icon: <IoPersonOutline /> },
+    { id: 'summary', label: 'Summary', icon: <IoKeyOutline /> }, // Using key icon for summary as placeholder
+    { id: 'appearance', label: 'Appearance', icon: <IoColorPaletteOutline /> },
+    { id: 'accessibility', label: 'Accessibility', icon: <IoAccessibilityOutline /> },
+    { id: 'changename', label: 'Change Name', icon: null},
+    { id: 'notification', label: 'Notification', icon: null},
+    { id: 'extension', label: 'About Extension', icon: <IoExtensionPuzzleOutline /> },
+  ];
+
+  return (
+    <div className={style.container}>
+      <h1 className={style.title}>Menu</h1>
+
+      <div className={style.profile_details}>
+          <img src={Profile} alt="" className = {style.profile_icon}/>
+          <h1>{username}</h1>
+      </div>
+
+      {/* Navigation Menu */}
+      <ul className={style.menuList}>
+        {menuItems.map((item) => (
+          <li
+            key={item.id}
+            // USE activeTab FROM PROPS HERE:
+            className={`${style.menuItem} ${activeTab === item.id ? style.active : ''}`}
+            // USE onTabChange FROM PROPS HERE:
+            onClick={() => onTabChange(item.id)}
+          >
+            <span className={style.icon}>{item.icon}</span>
+            {item.label}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Sidebar;

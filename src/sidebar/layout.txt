@@ -1,0 +1,9 @@
+/src
+  ├── components/
+  │    ├── Sidebar.jsx        <-- Left Menu
+  │    ├── SettingsLayout.jsx <-- The Parent (Orchestrator)
+  │    └── panels/            <-- The Right Side Content
+  │         ├── ProfileSettings.jsx
+  │         ├── PrivacySettings.jsx
+  │         ├── AppearanceSettings.jsx
+  │         └── AboutSettings.jsx
