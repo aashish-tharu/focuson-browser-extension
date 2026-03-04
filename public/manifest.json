@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Focus on",
+  "version": "0.1.0",
+  "description": "This extension will help to focus student",
+
+  "permissions": ["storage", "tabs", "activeTab", "scripting", "geolocation"],
+
+  "chrome_url_overrides": {
+    "newtab": "./homepage/index.html"
+  },
+
+  "host_permissions": [
+    "https://api.open-meteo.com/*"
+  ],
+
+  "options_page": "index.html",
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./background/themeManager.js"]
+    }
+  ],
+
+  "action": {
+    "default_title": "Focus On",
+    "default_popup": "./popup/index.html",
+    "default_icon": {
+      "16": "./assets/ext-icon.png",
+      "24": "./assets/ext-icon.png",
+      "32": "./assets/ext-icon.png"
+    }
+  }
+}

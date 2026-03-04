@@ -1,20 +1,26 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .layoutContainer {
-  display: flex; /* This aligns Left and Right side-by-side */
+  display: flex;
   height: 100vh;
   width: 100vw;
-  background-color: #191919; /* Dark background for the whole app */
-  overflow: hidden; /* Prevents double scrollbars */
+  background-color: #191919;
+  overflow: hidden;
 }
 
 .leftPanel {
-  width: 320px; /* Fixed width for sidebar */
-  flex-shrink: 0; /* Prevent sidebar from shrinking */
-  border-right: 1px solid #333; /* Separator line */
+  width: 320px; 
+  flex-shrink: 0; 
+  border-right: 1px solid #333; 
 }
 
 .rightPanel {
-  flex-grow: 1; /* Takes all remaining space */
-  overflow-y: auto; /* Allows scrolling ONLY inside the right panel */
+  flex-grow: 1; 
+  overflow-y: auto; 
   padding: 40px;
   color: #fff;
 }
