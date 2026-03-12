@@ -20,7 +20,7 @@ const Sidebar = ({ activeTab, onTabChange }) => {
 
   const menuItems = [
     { id: 'profiles', label: 'Profiles', icon: <IoPersonOutline /> },
-    { id: 'summary', label: 'Summary', icon: <IoKeyOutline /> },
+    { id: 'DashBoard', label: 'Dashboard', icon: <IoKeyOutline /> },
     { id: 'appearance', label: 'Appearance', icon: <IoColorPaletteOutline /> },
     { id: 'accessibility', label: 'Accessibility', icon: <IoAccessibilityOutline /> },
     { id: 'changename', label: 'Change Name', icon: null},

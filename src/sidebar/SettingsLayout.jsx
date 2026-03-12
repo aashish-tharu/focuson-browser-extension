@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 
 import ProfileSettings from './panels/profiles/ProfileSettings';
-import Summary from './panels/Summary';
+import DashBoard from './panels/FocusOnDashboard/FocusOnDashboard';
 import AppearanceSettings from './panels/AppearanceSettings';
 import AboutSettings from './panels/PrivacySettings';
 import NotificationsSettings from './panels/NotificationsSettings';
@@ -14,7 +14,7 @@ const SettingsLayout = () => {
 
   const PANELS = {
     profiles: <ProfileSettings />,
-    summary:  <Summary />,
+    DashBoard:  <DashBoard />,
     appearance: <AppearanceSettings />,
     notification: <NotificationsSettings />,
     about:    <AboutSettings />
