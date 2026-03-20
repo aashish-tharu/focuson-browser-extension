@@ -3,7 +3,8 @@ import Sidebar from './Sidebar';
 
 import ProfileSettings from './panels/profiles/ProfileSettings';
 import DashBoard from './panels/FocusOnDashboard/FocusOnDashboard';
-import AppearanceSettings from './panels/AppearanceSettings';
+import FocusProfile from './panels/FocusProfile/FocusProfile';
+import Accessibility from './panels/Accessibility/Accessibility'
 import AboutSettings from './panels/PrivacySettings';
 import NotificationsSettings from './panels/NotificationsSettings';
 
@@ -15,7 +16,8 @@ const SettingsLayout = () => {
   const PANELS = {
     profiles: <ProfileSettings />,
     DashBoard:  <DashBoard />,
-    appearance: <AppearanceSettings />,
+    FocusProfile: <FocusProfile />,
+    Accessibility : <Accessibility />,
     notification: <NotificationsSettings />,
     about:    <AboutSettings />
 
