@@ -1,4 +1,4 @@
-const SOCIAL_MEDIA_SITES = ["facebook.com", "youtube.com", instagram.com, x.com];
+const SOCIAL_MEDIA_SITES = ["facebook.com", "youtube.com", "instagram.com", "x.com"];
 
 async function updateBlockingRules() {
     try {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './Accessibility.css'
 
 function Accessibility() {
     const socialMedia = ["facebook.com", "youtube.com"];
@@ -98,7 +99,7 @@ function Accessibility() {
     };
 
     return (
-        <div style={{ padding: '20px', maxWidth: '600px', fontFamily: 'sans-serif' }}>
+        <div className="main-container">
             
             <div className="block-sites" style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '2px solid #eee' }}>
                 <h2>Global Social Media Block</h2>
@@ -112,16 +113,16 @@ function Accessibility() {
                 </label>
 
                 {isSocialBlocked && (
-                    <p style={{ color: 'red', margin: '5px 0 0 0', fontSize: '14px' }}>
+                    <p className = "display-active-status">
                         Active: Social media sites are currently blocked.
                     </p>
                 )}
             </div>
 
-            <div className="workspaces">
-                <h2>Custom Workspaces</h2>
+            <div className="workspaces-section">
+                <h2 >Custom Workspaces</h2>
 
-                <form onSubmit={handleAddWorkspace} style={{ marginBottom: '20px' }}>
+                <form onSubmit={handleAddWorkspace} className="create-workspace-form">
                     <input 
                         type="text" 
                         value={newWorkspaceName} 
@@ -129,15 +130,15 @@ function Accessibility() {
                         onChange={(e) => setNewWorkspaceName(e.target.value)}
                         style={{ marginRight: '10px' }}
                     />
-                    <button type="submit">Create Workspace</button>
+                    <button type="submit" className = "btn-create">Create Workspace</button>
                 </form>
 
                 <div className="workspaces-list">
                     {workspaces.map((ws) => (
-                        <div key={ws.id} style={{ border: '1px solid #ccc', padding: '15px', marginBottom: '15px', borderRadius: '5px' }}>
+                        <div key={ws.id} className={`workspace-card ${ws.isActive ? 'active-workspace' : ''}`}>
 
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                            <div className="workspace-header">
+                                <div className="workspace-title-group">
                                     <h3 style={{ margin: 0 }}>{ws.name}</h3>
                                     {/* --- NEW DELETE BUTTON --- */}
                                     <button 
@@ -147,7 +148,7 @@ function Accessibility() {
                                         Delete Workspace
                                     </button>
                                 </div>
-                                <label style={{ cursor: 'pointer' }}>
+                                <label style={{ cursor: 'pointer', fontWeight: '500' }}>
                                     <input 
                                         type="checkbox" 
                                         checked={ws.isActive}
@@ -156,7 +157,7 @@ function Accessibility() {
                                 </label>
                             </div>
 
-                            <form onSubmit={(e) => handleAddSite(ws.id, e)} style={{ marginBottom: '10px' }}>
+                            <form onSubmit={(e) => handleAddSite(ws.id, e)} className="add-site-form">
                                 <input 
                                     type="text" 
                                     value={siteInputs[ws.id] || ""}
@@ -164,31 +165,25 @@ function Accessibility() {
                                     onChange={(e) => handleSiteInputChange(ws.id, e.target.value)}
                                     style={{ marginRight: '10px' }}
                                 />
-                                <button type="submit">Add Site</button>
+                                <button type="submit" className="btn-add-site">Add Site</button>
                             </form>
 
-                            <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                            <ul className="sites-list">
                                 {ws.sites.length === 0 && <li style={{ color: '#888' }}>No sites added yet.</li>}
                                 
                                 {ws.sites.map((site, index) => (
-                                    <li key={index} style={{ 
-                                        color: ws.isActive ? 'red' : 'black',
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
-                                        marginBottom: '5px'
-                                    }}>
-                                        <span>
-                                            {site} {ws.isActive && <strong>(Blocked)</strong>}
-                                        </span>
-                                        <button 
-                                            onClick={() => handleDeleteSite(ws.id, index)}
-                                            style={{ background: 'transparent', border: 'none', color: '#cc0000', cursor: 'pointer', fontWeight: 'bold' }}
-                                            title="Remove site"
-                                        >
-                                            ✕
-                                        </button>
-                                    </li>
+                                    <li key={index} className="site-item">
+                            <span className="site-name">
+                                {site} {ws.isActive && <span className="blocked-badge">(Blocked)</span>}
+                            </span>
+                            <button 
+                                onClick={() => handleDeleteSite(ws.id, index)}
+                                className="btn-delete-site"
+                                title="Remove site"
+                            >
+                                ✕
+                            </button>
+                        </li>
                                 ))}
                             </ul>
 

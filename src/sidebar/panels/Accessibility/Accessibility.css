@@ -1,0 +1,210 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    padding: 20px;
+    maxWidth: 600px;
+    fontFamily: sans-serif; 
+}
+
+.block-sites {
+    height: auto;
+    width: auto;
+    padding: 10px;
+    border: 5px solid blue;
+    border-radius: 20px;
+    box-shadow: 5px 5px 2px rgb(63, 62, 62);
+    background-color: rgb(180, 171, 171);
+}
+
+.display-active-status {
+    color: red;
+    margin: 5px 0 0 0;
+    fontSize: 14px;
+}
+
+.workspaces-section {
+  margin-top: 20px;
+}
+
+.workspaces-section h2 {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Create Workspace Form */
+.create-workspace-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.base-input {
+  flex-grow: 1;
+  padding: 10px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.base-input:focus {
+  border-color: #4CAF50;
+}
+
+.btn-create {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.btn-create:hover {
+  background-color: #45a049;
+}
+
+.workspace-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  transition: all 0.3s ease;
+}
+
+/* State change when blocklist is ON */
+.workspace-card.active-workspace {
+  border-color: #86efac;
+  background-color: #f0fdf4;
+}
+
+.workspace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.workspace-title-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.workspace-title-group h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #1f2937;
+}
+
+.btn-delete-workspace {
+  background-color: transparent;
+  color: #ef4444;
+  border: 1px solid #fca5a5;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-delete-workspace:hover {
+  background-color: #fef2f2;
+  border-color: #ef4444;
+}
+
+/* Add Site Form inside card */
+.add-site-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.btn-add-site {
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-add-site:hover {
+  background-color: #4b5563;
+}
+
+.active-workspace .btn-add-site {
+  background-color: #22c55e;
+}
+
+.active-workspace .btn-add-site:hover {
+  background-color: #16a34a;
+}
+
+/* Sites List inside card */
+.sites-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #f3f4f6;
+}
+
+.active-workspace .site-item {
+  background-color: #ffffff;
+  border-color: #dcfce7;
+}
+
+.site-name {
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.active-workspace .site-name {
+  color: #b91c1c; /* Red text when blocked */
+  font-weight: 500;
+}
+
+.blocked-badge {
+  font-size: 0.8rem;
+  color: #ef4444;
+  font-weight: 700;
+  margin-left: 8px;
+}
+
+.btn-delete-site {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.btn-delete-site:hover {
+  color: #ef4444;
+  background-color: #fee2e2;
+}
