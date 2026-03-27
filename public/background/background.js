@@ -105,3 +105,6 @@ chrome.alarms.onAlarm.addListener((alarm) => {
     saveTimeSpent();
   }
 });
+
+
+importScripts('siteBlocker.js');
