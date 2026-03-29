@@ -1,0 +1,119 @@
+.desktop-focus-container {
+  width: 100%;
+  max-width: 1000px; 
+  padding: 40px;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.desktop-stat-card {
+  background-color: #242424; /* Matches a dark app theme nicely */
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.stat-title {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.stat-number {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.stat-number.highlight {
+  color: #4da6ff; 
+}
+
+.list-section {
+  background-color: #242424;
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.list-header {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.desktop-session-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.desktop-session-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background-color: #2a2a2a;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+/* Subtle slide effect for desktop cursors */
+.desktop-session-item:hover {
+  background-color: #333;
+  border-color: #444;
+  transform: translateX(6px); 
+}
+
+.item-date {
+  font-size: 1.05rem;
+  color: #cccccc;
+  font-weight: 500;
+}
+
+.item-time {
+  background-color: rgba(77, 166, 255, 0.1);
+  color: #4da6ff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid rgba(77, 166, 255, 0.2);
+}
+
+.empty-message {
+  text-align: center;
+  color: #888;
+  padding: 50px 0;
+  font-size: 1.1rem;
+}
