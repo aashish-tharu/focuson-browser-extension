@@ -6,7 +6,7 @@ import DashBoard from './panels/FocusOnDashboard/FocusOnDashboard';
 import FocusProfile from './panels/FocusProfile/FocusProfile';
 import Accessibility from './panels/Accessibility/Accessibility'
 import AboutSettings from './panels/PrivacySettings';
-import NotificationsSettings from './panels/NotificationsSettings';
+import NotificationsSettings from './panels/Notification/NotificationsSettings';
 
 import style from './SettingsLayout.module.css';
 

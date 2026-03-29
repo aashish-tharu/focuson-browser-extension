@@ -4,7 +4,15 @@
   "version": "0.1.0",
   "description": "This extension will help to focus student",
 
-  "permissions": ["storage", "tabs", "activeTab", "scripting", "geolocation", "alarms", "idle", "declarativeNetRequest"],
+ "permissions": ["storage",
+    "tabs",
+    "activeTab",
+    "scripting",
+    "geolocation",
+    "alarms",
+    "idle",
+    "declarativeNetRequest",
+    "notifications"],
 
   "chrome_url_overrides": {
     "newtab": "./homepage/index.html"

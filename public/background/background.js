@@ -108,3 +108,4 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 
 
 importScripts('siteBlocker.js');
+importScripts('notification.js');

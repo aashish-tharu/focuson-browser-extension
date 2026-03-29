@@ -3,7 +3,14 @@ import { useEffect } from 'react';
 import style from './Sidebar.module.css';
 import Profile from '../assets/user.png';
 
-import { IoSearchOutline, IoPersonOutline, IoKeyOutline, IoColorPaletteOutline, IoAccessibilityOutline, IoExtensionPuzzleOutline } from "react-icons/io5";
+import { 
+  IoGridOutline, 
+  IoPersonOutline, 
+  IoFilterOutline, 
+  IoNotificationsOutline, 
+  IoAccessibilityOutline, 
+  IoExtensionPuzzleOutline,
+} from "react-icons/io5";
 
 const Sidebar = ({ activeTab, onTabChange }) => {
   
@@ -20,11 +27,10 @@ const Sidebar = ({ activeTab, onTabChange }) => {
 
   const menuItems = [
     { id: 'profiles', label: 'Profiles', icon: <IoPersonOutline /> },
-    { id: 'DashBoard', label: 'Dashboard', icon: <IoKeyOutline /> },
-    { id: 'FocusProfile', label: 'Focus Profile', icon: <IoColorPaletteOutline /> },
+    { id: 'DashBoard', label: 'Dashboard', icon: <IoGridOutline /> },
+    { id: 'FocusProfile', label: 'Focus Profile', icon: <IoFilterOutline /> },
     { id: 'Accessibility', label: 'Accessibility', icon: <IoAccessibilityOutline /> },
-    { id: 'changename', label: 'Change Name', icon: null},
-    { id: 'notification', label: 'Notification', icon: null},
+    { id: 'notification', label: 'Notification', icon: <IoNotificationsOutline />},
     { id: 'extension', label: 'About Extension', icon: <IoExtensionPuzzleOutline /> },
   ];
 
