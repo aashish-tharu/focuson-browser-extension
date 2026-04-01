@@ -5,7 +5,7 @@ import ProfileSettings from './panels/profiles/ProfileSettings';
 import DashBoard from './panels/FocusOnDashboard/FocusOnDashboard';
 import FocusProfile from './panels/FocusProfile/FocusProfile';
 import Accessibility from './panels/Accessibility/Accessibility'
-import AboutSettings from './panels/PrivacySettings';
+import About from './panels/About/About';
 import NotificationsSettings from './panels/Notification/NotificationsSettings';
 
 import style from './SettingsLayout.module.css';
@@ -19,7 +19,7 @@ const SettingsLayout = () => {
     FocusProfile: <FocusProfile />,
     Accessibility : <Accessibility />,
     notification: <NotificationsSettings />,
-    about:    <AboutSettings />
+    extension:    <About />
 
   };
 
