@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import style from './Sidebar.module.css';
 import Profile from '../assets/user.png';
+import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { 
   IoGridOutline, 
@@ -26,36 +28,31 @@ const Sidebar = ({ activeTab, onTabChange }) => {
 
 
   const menuItems = [
-    { id: 'profiles', label: 'Profiles', icon: <IoPersonOutline /> },
+    { id: 'profile', label: 'Profiles', icon: <IoPersonOutline /> },
     { id: 'DashBoard', label: 'Dashboard', icon: <IoGridOutline /> },
     { id: 'FocusProfile', label: 'Focus Profile', icon: <IoFilterOutline /> },
     { id: 'Accessibility', label: 'Accessibility', icon: <IoAccessibilityOutline /> },
     { id: 'notification', label: 'Notification', icon: <IoNotificationsOutline />},
-    { id: 'extension', label: 'About Extension', icon: <IoExtensionPuzzleOutline /> },
+    { id: 'about', label: 'About Extension', icon: <IoExtensionPuzzleOutline /> },
   ];
 
   return (
-    <div className={style.container}>
-      <h1 className={style.title}>Menu</h1>
-
-      <div className={style.profile_details}>
-          <img src={Profile} alt="" className = {style.profile_icon}/>
-          <h1>{username}</h1>
-      </div>
-
-      <ul className={style.menuList}>
+    <>
+      <nav className={style.nav}>
         {menuItems.map((item) => (
-          <li
+          <NavLink 
             key={item.id}
-            className={`${style.menuItem} ${activeTab === item.id ? style.active : ''}`}
-            onClick={() => onTabChange(item.id)}
-          >
-            <span className={style.icon}>{item.icon}</span>
-            {item.label}
-          </li>
+            to={`/${item.id.toLowerCase()}`}
+          className={({ isActive }) => 
+          isActive ? `${style.menuItem} ${style.active}` : style.menuItem
+        }
+        >
+        <span className={style.icon}>{item.icon}</span>
+        {item.label}
+        </NavLink>
         ))}
-      </ul>
-    </div>
+      </nav>
+    </>
   );
 };
 
