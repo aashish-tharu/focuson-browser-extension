@@ -1,62 +1,85 @@
 :root {
+  --bg-color: #ffffff;
+  --card-bg: #f9fafb;
+  --status-bg: rgba(0, 0, 0, 0.05);
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --accent-blue: #0078d4;
+  --card-border: #e0e0e0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
     --bg-color: #202020;
     --card-bg: #2b2b2b;
     --status-bg: rgba(255, 255, 255, 0.05);
     --text-primary: #ffffff;
     --text-secondary: #aaaaaa;
     --accent-blue: #71afe5;
-    --toggle-on: #4cc2ff;
+    --card-border: #3d3d3d;
+  }
 }
 
 .about-page {
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 40px;
-    min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .page-title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 25px;
 }
 
 .main-card {
-    background-color: var(--card-bg);
-    border: 1px solid #3d3d3d;
-    border-radius: 8px;
-    padding: 24px;
-    max-width: 800px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .header-section {
-    display: flex;
-    align-items: center;
-    margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
 .app-icon {
-    width: 48px;
-    height: 48px;
-    margin-right: 16px;
+  width: 48px;
+  height: 48px;
+  margin-right: 16px;
+  object-fit: contain;
 }
 
 .app-name {
-    font-size: 20px;
-    font-weight: 600;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .about-footer a {
-    color: var(--accent-blue);
-    text-decoration: none;
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.about-footer a:hover {
+  text-decoration: underline;
 }
 
 .copyright {
-    color: var(--text-secondary);
-    margin: 15px 0 5px 0;
+  color: var(--text-secondary);
+  margin: 15px 0 5px 0;
+  font-size: 13px;
 }
 
 .footer-links {
-    margin-top: 20px;
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
 }

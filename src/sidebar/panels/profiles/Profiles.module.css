@@ -1,5 +1,35 @@
+:root {
+  --profile-text: #202124;
+  --profile-text-muted: #5f6368;
+  --profile-bg-card: #ffffff;
+  --profile-bg-input: #f1f3f4;
+  --profile-border: #e0e0e0;
+  --profile-hover: #f8f9fa;
+  --profile-modal-overlay: rgba(0, 0, 0, 0.4);
+  --profile-btn-border: #dadce0;
+  --profile-accent: #3b82f6;
+  --profile-accent-hover: #2563eb;
+  --profile-success: #1e8e3e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --profile-text: #ffffff;
+    --profile-text-muted: #aaa;
+    --profile-bg-card: #2b2b2b;
+    --profile-bg-input: #1e1e1e;
+    --profile-border: #444;
+    --profile-hover: #333;
+    --profile-modal-overlay: rgba(0, 0, 0, 0.6);
+    --profile-btn-border: #555;
+    --profile-accent: #3b82f6;
+    --profile-accent-hover: #2563eb;
+    --profile-success: #6cc17f;
+  }
+}
+
 .container {
-  color: #fff;
+  color: var(--profile-text);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-width: 800px;
 }
@@ -20,7 +50,7 @@
 .textButton {
   background: none;
   border: none;
-  color: #fff;
+  color: var(--profile-text);
   cursor: pointer;
   font-size: 14px;
 }
@@ -30,8 +60,8 @@
 }
 
 .card {
-  background-color: #2b2b2b;
-  border: 1px solid #444;
+  background-color: var(--profile-bg-card);
+  border: 1px solid var(--profile-border);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -40,13 +70,13 @@
   display: flex;
   align-items: center;
   padding: 20px;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid var(--profile-border);
 }
 
 .avatarLarge {
   width: 60px;
   height: 60px;
-  background-color: #444;
+  background-color: var(--profile-bg-input);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -68,12 +98,12 @@
 .userInfo p {
   margin: 0 0 4px 0;
   font-size: 13px;
-  color: #aaa;
+  color: var(--profile-text-muted);
 }
 
 .syncStatus {
   font-size: 13px;
-  color: #6cc17f;
+  color: var(--profile-success);
 }
 
 .actions {
@@ -83,8 +113,8 @@
 
 .iconButton, .outlineButton {
   background-color: transparent;
-  border: 1px solid #555;
-  color: #fff;
+  border: 1px solid var(--profile-btn-border);
+  color: var(--profile-text);
   border-radius: 4px;
   padding: 6px 12px;
   cursor: pointer;
@@ -96,7 +126,7 @@
 }
 
 .iconButton:hover, .outlineButton:hover {
-  background-color: #3b3b3b;
+  background-color: var(--profile-hover);
 }
 
 .cardBottom {
@@ -109,14 +139,14 @@
   justify-content: space-between;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--profile-text);
   padding: 16px 20px;
   cursor: pointer;
   font-size: 14px;
 }
 
 .manageAccountBtn:hover {
-  background-color: #333;
+  background-color: var(--profile-hover);
 }
 
 .modalOverlay {
@@ -125,7 +155,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: var(--profile-modal-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,12 +163,12 @@
 }
 
 .modal {
-  background-color: #2b2b2b;
-  border: 1px solid #444;
+  background-color: var(--profile-bg-card);
+  border: 1px solid var(--profile-border);
   border-radius: 8px;
   width: 400px;
   padding: 20px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
 .modalHeader {
@@ -156,20 +186,20 @@
 .closeBtn {
   background: none;
   border: none;
-  color: #aaa;
+  color: var(--profile-text-muted);
   font-size: 16px;
   cursor: pointer;
 }
 
 .closeBtn:hover {
-  color: #fff;
+  color: var(--profile-text);
 }
 
 .nameInput {
   width: 100%;
-  background-color: #1e1e1e;
-  border: 1px solid #555;
-  color: #fff;
+  background-color: var(--profile-bg-input);
+  border: 1px solid var(--profile-border);
+  color: var(--profile-text);
   padding: 10px;
   border-radius: 4px;
   margin-bottom: 20px;
@@ -189,7 +219,7 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: #333;
+  background-color: var(--profile-bg-input);
   border: 2px solid transparent;
   font-size: 30px;
   cursor: pointer;
@@ -199,11 +229,11 @@
 }
 
 .iconOption:hover {
-  background-color: #444;
+  background-color: var(--profile-hover);
 }
 
 .selectedIcon {
-  border-color: #3b82f6;
+  border-color: var(--profile-accent);
 }
 
 .modalFooter {
@@ -223,19 +253,19 @@
 
 .cancelBtn {
   background-color: transparent;
-  color: #fff;
-  border: 1px solid #555;
+  color: var(--profile-text);
+  border: 1px solid var(--profile-btn-border);
 }
 
 .cancelBtn:hover {
-  background-color: #3b3b3b;
+  background-color: var(--profile-hover);
 }
 
 .updateBtn {
-  background-color: #3b82f6;
+  background-color: var(--profile-accent);
   color: #fff;
 }
 
 .updateBtn:hover {
-  background-color: #2563eb;
+  background-color: var(--profile-accent-hover);
 }

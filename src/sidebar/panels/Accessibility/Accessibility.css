@@ -1,42 +1,78 @@
+:root {
+  --main-bg: #ffffff;
+  --section-bg: #f9fafb;
+  --card-bg: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --border-color: #e5e7eb;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --shadow: rgba(0, 0, 0, 0.05);
+  
+  --primary-green: #4CAF50;
+  --primary-green-hover: #45a049;
+  --active-bg: #f0fdf4;
+  --active-border: #86efac;
+  --danger: #ef4444;
+  --danger-hover: #fca5a5;
+  --danger-light: #fef2f2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-bg: #121212;
+    --section-bg: #1e1e1e;
+    --card-bg: #1e1e1e;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --border-color: #374151;
+    --input-bg: #2d2d2d;
+    --input-border: #4b5563;
+    --shadow: rgba(0, 0, 0, 0.3);
+    
+    --active-bg: #064e3b;
+    --active-border: #059669;
+    --danger-light: #450a0a;
+  }
+}
+
 html, body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  background-color: var(--main-bg);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .main-container {
-    padding: 20px;
-    maxWidth: 600px;
-    fontFamily: sans-serif; 
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .block-sites {
-    height: auto;
-    width: auto;
-    padding: 10px;
-    border: 5px solid blue;
-    border-radius: 20px;
-    box-shadow: 5px 5px 2px rgb(63, 62, 62);
-    background-color: rgb(180, 171, 171);
+  padding: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px var(--shadow);
+  background-color: var(--section-bg);
+  margin-bottom: 25px;
 }
 
 .display-active-status {
-    color: red;
-    margin: 5px 0 0 0;
-    fontSize: 14px;
-}
-
-.workspaces-section {
-  margin-top: 20px;
+  color: var(--danger);
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .workspaces-section h2 {
   font-size: 1.25rem;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 15px;
 }
 
-/* Create Workspace Form */
-.create-workspace-form {
+.create-workspace-form, .add-site-form {
   display: flex;
   gap: 10px;
   margin-bottom: 25px;
@@ -45,7 +81,9 @@ html, body {
 .base-input {
   flex-grow: 1;
   padding: 10px 15px;
-  border: 1px solid #d1d5db;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-primary);
   border-radius: 6px;
   font-size: 1rem;
   outline: none;
@@ -53,11 +91,11 @@ html, body {
 }
 
 .base-input:focus {
-  border-color: #4CAF50;
+  border-color: var(--primary-green);
 }
 
 .btn-create {
-  background-color: #4CAF50;
+  background-color: var(--primary-green);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -68,23 +106,32 @@ html, body {
 }
 
 .btn-create:hover {
-  background-color: #45a049;
+  background-color: var(--primary-green-hover);
+}
+
+.btn-add-site {
+  background-color: var(--text-secondary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
 }
 
 .workspace-card {
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  background-color: var(--card-bg);
+  box-shadow: 0 2px 4px var(--shadow);
   transition: all 0.3s ease;
 }
 
-/* State change when blocklist is ON */
 .workspace-card.active-workspace {
-  border-color: #86efac;
-  background-color: #f0fdf4;
+  border-color: var(--active-border);
+  background-color: var(--active-bg);
 }
 
 .workspace-header {
@@ -93,72 +140,32 @@ html, body {
   align-items: center;
   margin-bottom: 15px;
   padding-bottom: 15px;
-  border-bottom: 1px solid #f3f4f6;
-}
-
-.workspace-title-group {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .workspace-title-group h3 {
   margin: 0;
   font-size: 1.15rem;
-  color: #1f2937;
+  color: var(--text-primary);
 }
 
 .btn-delete-workspace {
   background-color: transparent;
-  color: #ef4444;
-  border: 1px solid #fca5a5;
+  color: var(--danger);
+  border: 1px solid var(--danger);
   padding: 4px 10px;
   border-radius: 6px;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: all 0.2s;
 }
 
 .btn-delete-workspace:hover {
-  background-color: #fef2f2;
-  border-color: #ef4444;
+  background-color: var(--danger-light);
 }
 
-/* Add Site Form inside card */
-.add-site-form {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.btn-add-site {
-  background-color: #6b7280;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background-color 0.2s;
-}
-
-.btn-add-site:hover {
-  background-color: #4b5563;
-}
-
-.active-workspace .btn-add-site {
-  background-color: #22c55e;
-}
-
-.active-workspace .btn-add-site:hover {
-  background-color: #16a34a;
-}
-
-/* Sites List inside card */
 .sites-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .site-item {
@@ -167,44 +174,29 @@ html, body {
   align-items: center;
   padding: 8px 12px;
   margin-bottom: 6px;
-  background-color: #f9fafb;
+  background-color: var(--section-bg);
   border-radius: 6px;
-  border: 1px solid #f3f4f6;
-}
-
-.active-workspace .site-item {
-  background-color: #ffffff;
-  border-color: #dcfce7;
+  border: 1px solid var(--border-color);
 }
 
 .site-name {
-  color: #374151;
+  color: var(--text-primary);
   font-size: 0.95rem;
 }
 
 .active-workspace .site-name {
-  color: #b91c1c; /* Red text when blocked */
-  font-weight: 500;
-}
-
-.blocked-badge {
-  font-size: 0.8rem;
-  color: #ef4444;
-  font-weight: 700;
-  margin-left: 8px;
+  color: var(--danger);
+  font-weight: 600;
 }
 
 .btn-delete-site {
   background: none;
   border: none;
-  color: #9ca3af;
+  color: var(--text-secondary);
   font-size: 1.1rem;
   cursor: pointer;
-  padding: 2px 6px;
-  border-radius: 4px;
 }
 
 .btn-delete-site:hover {
-  color: #ef4444;
-  background-color: #fee2e2;
+  color: var(--danger);
 }

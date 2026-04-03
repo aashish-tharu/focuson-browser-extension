@@ -86,7 +86,6 @@ const FocusOnDashboard = () => {
     <div className="dashboard-panel">
       <header className="panel-header">
         <h2>Dashboard Overview</h2>
-        <button className="settings-btn">⚙️</button>
       </header>
       <div className="top-widgets">
 

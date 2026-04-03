@@ -1,13 +1,37 @@
-/* Main container layout */
+:root {
+  --noti-bg: #ffffff;
+  --noti-border: #e5e7eb;
+  --noti-text-title: #1a1a1a;
+  --noti-text-desc: #666666;
+  --switch-bg: #e0e0e0;
+  --switch-handle: #ffffff;
+  --switch-active: #4da6ff;
+  --switch-shadow: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --noti-bg: #242424;
+    --noti-border: #333333;
+    --noti-text-title: #ffffff;
+    --noti-text-desc: #a0a0a0;
+    --switch-bg: #444444;
+    --switch-handle: #ffffff;
+    --switch-active: #4da6ff;
+    --switch-shadow: rgba(0, 0, 0, 0.4);
+  }
+}
+
 .noti-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 24px;
-  background-color: #242424;
-  border: 1px solid #333;
+  background-color: var(--noti-bg);
+  border: 1px solid var(--noti-border);
   border-radius: 12px;
-  max-width: 600px; 
+  max-width: 600px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .noti-text {
@@ -19,14 +43,14 @@
 .title {
   margin: 0;
   font-size: 1.1rem;
-  color: #ffffff;
+  color: var(--noti-text-title);
   font-weight: 600;
 }
 
 .desc {
   margin: 0;
   font-size: 0.9rem;
-  color: #a0a0a0;
+  color: var(--noti-text-desc);
 }
 
 .toggle-switch {
@@ -49,9 +73,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #444; 
+  background-color: var(--switch-bg);
   transition: 0.3s;
-  border-radius: 26px; 
+  border-radius: 26px;
 }
 
 .slider:before {
@@ -61,18 +85,18 @@
   width: 20px;
   left: 3px;
   bottom: 3px;
-  background-color: white;
-  transition: 0.3s cubic-bezier(0.4, 0.0, 0.2, 1); 
+  background-color: var(--switch-handle);
+  transition: 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px var(--switch-shadow);
 }
 
 .toggle-switch input:checked + .slider {
-  background-color: #4da6ff; 
+  background-color: var(--switch-active);
 }
 
 .toggle-switch input:checked + .slider:before {
-  transform: translateX(22px); 
+  transform: translateX(22px);
 }
 
 .toggle-switch input:focus + .slider {
