@@ -8,28 +8,11 @@
 </head>
 <body>
     
-    <nav class="top-nav">
-        <button class="menu-btn">☰</button>
-        <div class="nav-content">
-            <ul>
-                <li id = "home-btn">
-                    <img src="../assets/home.png" alt="">
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <img src="../assets/contract.png" alt="">
-                    <a href="#">Summary</a>
-                </li>
-                <li>
-                    <img src="../assets/id-card.png" alt="">
-                    <a href="#">Change Name</a>
-                </li>
-                <li>
-                    <img src="../assets/physical-wellbeing.png" alt="">
-                    <a href="">Digital Wellbeing</a>
-                </li>
-            </ul>
-        </div>
+    <nav class="top-nav">            
+        <a href="../settings-app/index.html" class="menu-btn-link">
+            <button class="menu-btn" id="home-btn" title="Settings">⚙️</button>
+        </a>
+        
         <div class="stats-weather-container">
             <div class="glass-widget stats-widget">
                 <span class="icon">🕒</span>
@@ -38,7 +21,6 @@
                     <p class="stats-val">0m</p>
                 </div>
                 <div class="location-box">
-                    <p class="city">Om</p>
                     <p class="region">Chandigarh</p>
                 </div>
             </div>
@@ -71,15 +53,27 @@
     </main>
 
     <footer class="bottom-nav">
-        <div class="todo-dropdown glass-widget">
+        <div class="todo-dropdown glass-widget" id="todoTrigger">
             <input type="checkbox" id="todo-check">
             <label for="todo-check">To-Do</label>
-            <span class="arrow">▼</span>
+            <span class="arrow">▲</span>
+
+            <div class="todo-panel" id="todoPanel">
+                <div class="panel-header">
+                    <div class="handle"></div> <h4>My Tasks</h4>
+                </div>
+                
+                <div class="todo-list-content" id="todoList">
+                    </div>
+
+                <div class="todo-input-wrapper">
+                    <input type="text" id="todoInput" placeholder="Add a task..." maxlength="50">
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src = "focus.js"></script>
-    <script src = "weather.js"></script>
-
+    <script src="focus.js"></script>
+    <script src="weather.js"></script>
 </body>
 </html>

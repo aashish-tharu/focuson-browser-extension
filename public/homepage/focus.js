@@ -63,12 +63,6 @@ inputNode.addEventListener('input', ()=>{
     });
 })
 
-//handling navigation part.
-document.querySelector('.menu-btn').addEventListener('click', ()=>{
-    document.querySelector('.nav-content').classList.toggle('nav-show');
-    console.log(document.querySelector('.nav-content'));
-})
-
 //opening react setting page.
 document.addEventListener('DOMContentLoaded', () => {
   const settingsButton = document.getElementById('home-btn');
