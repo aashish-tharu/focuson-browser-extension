@@ -29,5 +29,12 @@
       "24": "./src/assets/ext-icon.png",
       "32": "./src/assets/ext-icon.png"
     }
-  }
+  },
+
+  "web_accessible_resources": [
+    {
+       "resources": ["react-app/index.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
