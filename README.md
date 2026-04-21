@@ -1,16 +1,119 @@
-# React + Vite
+# 🚀 Focus Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A Chrome extension designed to improve **digital wellbeing, reduce distractions, and enhance productivity** through a clean UI and smart tracking tools.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Overview
 
-## React Compiler
+Focus Extension is a hybrid Chrome extension built using **Vanilla JavaScript and React**.
+It helps users build better browsing habits by combining **focus tracking, customization, and digital wellbeing features** in a single interface.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🌙 Digital Wellbeing
+
+* Apply **dark mode** on websites that don’t support it
+* Adjust **brightness and contrast** for better visual comfort
+* Reduce eye strain during long browsing sessions
+
+---
+
+### 📊 Focus Tracking
+
+* Track time spent on different websites
+* Monitor most visited pages
+* Analyze browsing patterns and usage behavior
+
+---
+
+### 🧠 Personalized Dashboard
+
+* Clean and distraction-free homepage
+* Displays:
+    * Focus time
+    * Weather updates
+* Designed to promote mindful usage
+
+---
+
+### 👤 Profile Customization
+
+* Update user name
+* Personalize settings for a tailored experience
+
+---
+
+### 📝 Productivity Tools
+
+* Built-in **to-do list** for daily planning
+* Workspace-based **site blocking** to avoid distractions
+* Notifications to maintain consistent focus habits
+
+---
+
+## 🏗️ Architecture
+
+* **Vanilla JavaScript** → Lightweight popup & quick actions
+* **React (Vite)** → Advanced UI and dashboard
+* **HashRouter** → Handles routing inside Chrome extension
+* Modular and loosely coupled structure
+
+---
+
+## 📁 Project Structure
+
+```
+dist/
+├── homepage/      # React app (built)
+├── popup/         # Vanilla JS UI
+├── assets/
+└── manifest.json
+```
+
+---
+
+## 📦 Installation
+
+1. Download the latest release ZIP
+2. Extract the ZIP file
+3. Open Chrome → `chrome://extensions`
+4. Enable **Developer Mode**
+5. Click **Load unpacked**
+6. Select the extracted folder
+
+---
+
+## 🚀 Usage
+
+* Click the extension icon from the browser toolbar
+* Use the popup for quick actions
+* Open the dashboard for:
+* Focus tracking
+* Settings
+* Personalization
+
+---
+
+## 📸 Screenshots
+* Home page
+* Dashboard
+* Digital wellbeing controls
+* To-do list
+
+---
+
+## 📈 Future Improvements
+
+* Advanced analytics dashboard
+* Cloud sync for user data
+* Chrome Web Store deployment
+* UI/UX enhancements
+
+---
+
+## 📄 License
+
+MIT License
