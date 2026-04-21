@@ -66,11 +66,36 @@ It helps users build better browsing habits by combining **focus tracking, custo
 ## 📁 Project Structure
 
 ```
-dist/
-├── homepage/      # React app (built)
-├── popup/         # Vanilla JS UI
-├── assets/
-└── manifest.json
+project-root/
+│
+├── public/                 # Vanilla JS (extension core)
+│   ├── background/
+│   ├── popup/
+│   ├── focusmode/
+│   ├── homepage/
+│   └── manifest.json
+│
+├── src/                    # React (UI layer)
+│   ├── components/         # reusable UI
+│   ├── panels/              # main screens
+│   │   ├── FocusOnDashboard/
+│   │   ├── Profile/
+│   │   ├── Accessibility/
+│   │   ├── Notifications/
+│   │   └── About/
+│   │
+│   ├── layouts/            # layout wrappers
+│   │   ├── MainLayout.jsx
+│   │   ├── Sidebar.jsx
+│   │   └── SettingsLayout.jsx
+│   │
+│   ├── assets/             # images, icons
+│   │
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+└── dist/                   # build output
 ```
 
 ---
@@ -97,12 +122,24 @@ dist/
 
 ---
 
-## 📸 Screenshots
-* Home page
-* Dashboard
-* Digital wellbeing controls
-* To-do list
+## 📸 Extension Preview
 
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="assets/images/toolbar.png" width="150"/><br/>
+      <b>Toolbar</b>
+    </td>
+    <td align="center">
+      <img src="assets/images/Home.png" width="400"/><br/>
+      <b>Home</b>
+    </td>
+    <td align="center">
+      <img src="assets/images/digital-wellbeing.png" width="400"/><br/>
+      <b>Dashboard</b>
+    </td>
+  </tr>
+</table>
 ---
 
 ## 📈 Future Improvements
