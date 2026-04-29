@@ -12,7 +12,8 @@
     "alarms",
     "idle",
     "declarativeNetRequest",
-    "notifications"],
+    "notifications",
+    "storage"],
 
   "chrome_url_overrides": {
     "newtab": "./homepage/index.html"

@@ -1,111 +1,137 @@
+const SESSION_DOMAIN_KEY = 'activeDomain';
+const SESSION_START_KEY  = 'startTime';
+
 let activeDomain = null;
-let startTime = null;
+let startTime    = null;
 
-//This function return URL Clean link.
 function getDomain(url) {
-  if (!url || url.startsWith('chrome://') || url.startsWith('edge://') || url.startsWith('about:')) {
-    return null;
-  }
+  if (!url) return null;
+  if (/^(chrome|edge|about):/.test(url)) return null;
   try {
-    const urlObj = new URL(url);
-    return urlObj.hostname.replace('www.', '');
-  } catch (e) {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
     return null;
   }
 }
 
-// Return today dates.
-function getTodayDateString() {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const day = String(today.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
+function todayKey() {
+  return new Date().toISOString().slice(0, 10);
 }
 
-// Calculate Time spent and save to local Storage.
+async function persistState() {
+  await chrome.storage.session.set({
+    [SESSION_DOMAIN_KEY]: activeDomain,
+    [SESSION_START_KEY]:  startTime,
+  });
+}
+
+async function restoreState() {
+  const result = await chrome.storage.session.get([SESSION_DOMAIN_KEY, SESSION_START_KEY]);
+  activeDomain = result[SESSION_DOMAIN_KEY] ?? null;
+  startTime    = result[SESSION_START_KEY]  ?? null;
+}
+
 async function saveTimeSpent() {
   if (!activeDomain || !startTime) return;
-  const now = Date.now();
-  const timeSpentMs = now - startTime;
-  if (timeSpentMs < 1000) return;
-  const todayKey = getTodayDateString();
-  const result = await chrome.storage.local.get([todayKey]);
-  const todayData = result[todayKey] || {};
-  todayData[activeDomain] = (todayData[activeDomain] || 0) + timeSpentMs;
-  await chrome.storage.local.set({ [todayKey]: todayData });
-  startTime = now;
-  console.log(`Saved ${timeSpentMs}ms for ${activeDomain}. Total today: ${todayData[activeDomain]}ms`);
+
+  const now        = Date.now();
+  const elapsedMs  = now - startTime;
+  if (elapsedMs < 1000) return;          
+
+  const key    = todayKey();
+  const stored = await chrome.storage.local.get(key);
+  const day    = stored[key] || {};
+
+  day[activeDomain] = (day[activeDomain] || 0) + elapsedMs;
+  await chrome.storage.local.set({ [key]: day });
+
+  startTime = now;                     
+  await persistState();
+
+  console.debug(`[tracker] +${elapsedMs}ms → ${activeDomain} (total today: ${day[activeDomain]}ms)`);
 }
 
-// Handle change in URL
+/**
+ * Switch tracking to a new domain.
+ * Saves time on the old domain first, then starts the new one.
+ */
 async function handleTabChange(url) {
   const newDomain = getDomain(url);
-  if (newDomain !== activeDomain) {
-    await saveTimeSpent();
-    
-    activeDomain = newDomain;
-    startTime = newDomain ? Date.now() : null;
-  }
+  if (newDomain === activeDomain) return; 
+
+  await saveTimeSpent();                   
+  activeDomain = newDomain;
+  startTime    = newDomain ? Date.now() : null;
+  await persistState();
 }
 
-// Event listener if user change the URL
-chrome.tabs.onActivated.addListener(async (activeInfo) => {
+/** Pause tracking (window blur, idle, lock). */
+async function pauseTracking() {
+  await saveTimeSpent();
+  activeDomain = null;
+  startTime    = null;
+  await persistState();
+}
+
+/** Resume tracking from whichever tab is currently active. */
+async function resumeTracking() {
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (tab?.url) await handleTabChange(tab.url);
+}
+
+(async () => {
+  await restoreState();
+  if (activeDomain && startTime) {
+    startTime = Date.now();
+    await persistState();
+  }
+  console.debug('[tracker] Worker started. Active domain:', activeDomain);
+})();
+
+// ─── Event listeners ──────────────────────────────────────────────────────────
+
+// User switches tabs.
+chrome.tabs.onActivated.addListener(async ({ tabId }) => {
   try {
-    const tab = await chrome.tabs.get(activeInfo.tabId);
-    handleTabChange(tab.url);
-  } catch (error) {
-    console.error("Error fetching tab:", error);
+    const tab = await chrome.tabs.get(tabId);
+    await handleTabChange(tab.url);
+  } catch (err) {
+    console.error('[tracker] onActivated error:', err);
   }
 });
 
-// Event listener if URL is typed.
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.url && tab.active) {
-    handleTabChange(changeInfo.url);
+// URL changes in the active tab (navigation, SPA route change).
+chrome.tabs.onUpdated.addListener(async (tabId, { url }, tab) => {
+  if (url && tab.active) {
+    await handleTabChange(url);
   }
 });
 
-//handle chrome minimize.
+// Browser window gains or loses focus.
 chrome.windows.onFocusChanged.addListener(async (windowId) => {
   if (windowId === chrome.windows.WINDOW_ID_NONE) {
-    await saveTimeSpent();
-    activeDomain = null;
-    startTime = null;
+    await pauseTracking();
   } else {
-    const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-    if (tabs.length > 0) {
-      handleTabChange(tabs[0].url);
-    }
+    await resumeTracking();
   }
 });
 
-//checking if user is idel
+// System goes idle / locks / becomes active again.
 chrome.idle.setDetectionInterval(60);
-chrome.idle.onStateChanged.addListener(async (newState) => {
-  if (newState === 'idle' || newState === 'locked') {
-    await saveTimeSpent();
-    activeDomain = null;
-    startTime = null;
-  } else if (newState === 'active') {
-    const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-    if (tabs.length > 0) {
-      handleTabChange(tabs[0].url);
-    }
+chrome.idle.onStateChanged.addListener(async (state) => {
+  if (state === 'idle' || state === 'locked') {
+    await pauseTracking();
+  } else if (state === 'active') {
+    await resumeTracking();
   }
 });
 
-//updating with every 1 min.
+// Periodic flush: saves elapsed time every minute so the popup always has
+// fresh data, and reduces data loss if the worker is killed unexpectedly.
 chrome.alarms.create('syncData', { periodInMinutes: 1 });
-
-//it was impossible to use setTimeout so using alarm
-//This also help me to handle live update in react app.
-chrome.alarms.onAlarm.addListener((alarm) => {
-  if (alarm.name === 'syncData') {
-    saveTimeSpent();
-  }
+chrome.alarms.onAlarm.addListener(async ({ name }) => {
+  if (name === 'syncData') await saveTimeSpent();
 });
-
 
 importScripts('siteBlocker.js');
 importScripts('notification.js');
