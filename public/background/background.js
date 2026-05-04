@@ -65,17 +65,7 @@ async function handleTabChange(url) {
   await persistState();
 }
 
-async function pauseTracking() {
-  await saveTimeSpent();
-  activeDomain = null;
-  startTime = null;
-  await persistState();
-}
-
-async function resumeTracking() {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (tab?.url) await handleTabChange(tab.url);
-}
+// ─── Restore state on worker start ───────────────────────────────────────────
 
 (async () => {
   await restoreState();
@@ -89,36 +79,12 @@ async function resumeTracking() {
 // ─── Event listeners ──────────────────────────────────────────────────────────
 
 chrome.tabs.onActivated.addListener(async ({ tabId }) => {
-  try {
-    const tab = await chrome.tabs.get(tabId);
-    if (!tab.url || tab.status !== 'complete') return;
-    await handleTabChange(tab.url);
-  } catch (err) {
-    console.error('[tracker] onActivated error:', err);
-  }
+  const tab = await chrome.tabs.get(tabId);
+  if (tab.url) await handleTabChange(tab.url);
 });
 
 chrome.tabs.onUpdated.addListener(async (tabId, { url }, tab) => {
-  if (url && tab.active) {
-    await handleTabChange(url);
-  }
-});
-
-chrome.windows.onFocusChanged.addListener(async (windowId) => {
-  if (windowId === chrome.windows.WINDOW_ID_NONE) {
-    await pauseTracking();
-  } else {
-    await resumeTracking();
-  }
-});
-
-chrome.idle.setDetectionInterval(60);
-chrome.idle.onStateChanged.addListener(async (state) => {
-  if (state === 'idle' || state === 'locked') {
-    await pauseTracking();
-  } else if (state === 'active') {
-    await resumeTracking();
-  }
+  if (url && tab.active) await handleTabChange(url);
 });
 
 chrome.alarms.create('syncData', { periodInMinutes: 1 });
