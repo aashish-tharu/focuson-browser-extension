@@ -55,3 +55,11 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onStartup.addListener(() => {
     updateBlockingRules();
 });
+
+// ─── Block social media when timer runs ──────────────────────────────────────
+chrome.storage.onChanged.addListener((changes, namespace) => {
+    if (namespace === 'local' && changes[STATE_KEY]) {
+        const newState = changes[STATE_KEY].newValue;
+        chrome.storage.local.set({ isSocialBlocked: newState?.isRunning || false });
+    }
+});
